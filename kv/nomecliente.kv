@@ -1,0 +1,99 @@
+#:import utils kivy.utils
+#:import HorariosTabela telas.HorariosTabela
+
+<NomeCliente>:
+    FloatLayout:
+        Label:
+            id: msg_erro
+            text: "DIGITE SEU [b]NOME[/b] E [b]HORÁRIO[/b]"
+            pos_hint: {"center_x": .5, "center_y": .88}
+            font_name: 'Gotham-Rounded-Medium'
+            font_size: 20
+            markup: True
+
+        TextInput:
+            id: id_input
+            hint_text: 'Digite seu nome aqui'
+            size_hint_y: None
+            size_hint_x: None
+            pos_hint: {"center_x": .5, "top": 0.8}
+            height: 80
+            width: 900
+            font_size: 45
+            halign: "center"
+            padding: [10, (self.height - self.line_height) / 2, 10, 0]  # Ajusta o padding para centralizar verticalmente
+            background_color: (1, 1, 1, 0) # cor do fundo
+            cursor_color: (1,1,1,1) # cor do cursor branco
+            on_focus: self.hint_text = '' if self.focus else 'Digite seu nome aqui'
+
+            canvas.before:
+                Color:
+                    rgba: (0.2, 0.2, 0.2, 0)  # Cor do fundo
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [10, 10, 10, 10]  # Raio dos cantos arredondados
+                Color:
+                    rgba: (1, 1, 1, 1)  # Cor da borda
+                Line:
+                    rounded_rectangle: (self.pos[0], self.pos[1], self.size[0], self.size[1], 10)
+                    width: 1 # Espessura da borda
+
+                Color:
+                    rgba: (1, 1, 1, 1)  # Cor do ícone
+                Rectangle:
+                    source: "icones/user.png"  # Caminho para o ícone
+                    size: 50, 50  # Tamanho do ícone
+                    pos: self.x + 10, self.y + 18  # Posição do ícone
+
+
+        #ADD UMA TABELA COM BOTÕES DE CADA HORARIO DE MEIA EM MEIA HORA DAS 8:00 ATÉ 21:00
+        HorariosTabela:
+            id: id_input_hora
+            size_hint: (1, .5)
+            pos_hint: {"center_x": .5, "top": 0.7}
+
+        MDButton:
+            id: id_enviar
+            style: "elevated"
+            theme_width: "Custom"
+            height: "70dp"
+            size_hint_x: .5
+            radius: [11,]
+            pos_hint: {"center_x": .5, "top": 0.23}
+            on_release:
+                app.verificador(id_input, id_input_hora)
+
+            MDButtonIcon:
+                icon: "send"
+                theme_icon_color: "Custom"
+                icon_color: utils.get_color_from_hex('#8214EB')
+                theme_font_size: "Custom"
+                font_size: "30sp"
+
+            MDButtonText:
+                markup:True
+                pos_hint: {'center_x': .5, 'center_y': .5}
+                theme_font_name: "Custom"
+                font_name: 'Gotham-Rounded-Medium'
+                theme_font_size: "Custom"
+                font_size: 30
+                theme_text_color: "Custom"
+                text_color: utils.get_color_from_hex('#8214EB')
+                text: "Faça Seu Check-in"
+
+
+        MDIconButton:
+            icon: "home"
+            style: "standard"
+            pos_hint: {"right": 0.1 , "top":0.15}
+            theme_icon_color: "Custom"
+            icon_color: "white"
+            theme_font_size: "Custom"
+            font_size: "40sp"
+            radius: [self.height / 2, ]
+            size_hint: None, None
+            size: "50dp", "50dp"
+            on_release:
+                app.casa()
+                root.manager.transition.direction = "right"
