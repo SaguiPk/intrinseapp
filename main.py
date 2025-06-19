@@ -549,7 +549,6 @@ class MainApp(MDApp):
                                            f'[size=60]Hoje {chave_dsh.lower()} sua sessão é as {str_hrs}[/size]\n'
                                            f'[size=50]{resultado[0]}[/size]\n')
 
-                            # id_tele = {'AUGUSTO': '', 'DEISE': 7948929598, 'ESMERALDA': 7539919786, 'GUILHERME': 7389489862, 'HINGRID': 7082995612, 'JULIA': 494843945, 'JULIE': 8107133645, 'MARIANA': '','MARINA': '', 'PAULO': 1909136619, 'REGINA': 1110671682, 'THAINA': 5595509644}
 
                             try: # TRATAR O ENVIO DA MENSAGEM BOT TELEGRAM -------------------
                                 token = os.getenv('TOKEN_TELEG')
