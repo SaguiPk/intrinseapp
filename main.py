@@ -834,7 +834,7 @@ class MainApp(MDApp):
             self.dialog = None
             self.current_index = 0
             self.total_arquivos = len(self.arq_nomes)
-            self.bot = telebot.TeleBot(token=f'{os.getenv('TOKEN_TELEG')}') 
+            self.bot = telebot.TeleBot(token=f"{os.getenv('TOKEN_TELEG')}") 
 
 
             # self.dialog = MDDialog(MDDialogHeadlineText(text="Enviar Controle de Datas"),
