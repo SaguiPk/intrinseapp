@@ -45,7 +45,8 @@ class MainApp(MDApp):
 
         self.dic_dias = {0:'SEGUNDA-FEIRA', 1:'TERCA-FEIRA', 2:'QUARTA-FEIRA', 3:'QUINTA-FEIRA', 4:'SEXTA-FEIRA'}   #, 5:'SABADO', 6:'DOMINGO'}
         self.dic_meses = {1:'janeiro', 2:'fevereiro', 3:'março', 4:'abril', 5:'maio', 6:'junho', 7:'julho', 8:'agosto', 9:'setembro', 10:'outubro', 11:'novembro', 12:'dezembro'}
-        load_dotenv()
+        env_path = os.path.join(os.path.dirname(__file__), '.env')
+        load_dotenv(dotenv_path=env_path)
         return Builder.load_file('main.kv')
 
     def check_internet(self, time=0):
