@@ -55,16 +55,14 @@ def formt_text(text):
     #print(new_text)
     return new_text.upper(), convenio
 
-def verificação_nomecliente(text_input, text_df, list_semana):
-    from fuzzywuzzy import process
-    return process.extract("new york jets", list_semana, limit=3)
+
 
 class Url_Sheets:
     def __init__(self):
         self.conexao = False
         self.verif_conect()
         load_dotenv()
-        self.url = os.getenv('URL_PLANILHA')      #'https://docs.google.com/spreadsheets/d/1PBwyM79jZS7b4GxSr1ayocGleWT48k9V/'  #export?gid={id}&range=A:F&format=csv'
+        self.url = os.getenv('URL_PLANILHA')      #'https://docs.google.com/spreadsheets/d/<key>/'  #export?gid={id}&range=A:F&format=csv'
         print(self.url)
         self.session = requests.Session()
 
@@ -98,11 +96,11 @@ class Url_Sheets:
             return None
 
     def nomes_ids(self) -> Tuple[Optional[Dict], Optional[Dict]]:
-        # response = requests.get(self.url + 'export?gid=268641735&range=A:C&format=csv', verify=certifi.where())
+        # response = requests.get(self.url + 'export?gid=<key>&range=A:C&format=csv', verify=certifi.where())
         # response.raise_for_status()  # Lança exceção para erros HTTP
         # df = pd.read_csv(io.StringIO(response.text))
         key = os.getenv('COD_PLAN_KEY')
-        url = self.url + key   #'export?gid=1538723142&range=A:C&format=csv'
+        url = self.url + key   #'export?gid=<key>&range=A:C&format=csv'
         #print('extraindo nomes e ids')
         response = self.fetch_csv(url)
         if not response:
