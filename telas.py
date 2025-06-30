@@ -9,7 +9,6 @@ from kivymd.uix.button import MDButton, MDButtonText
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.textinput import TextInput
 from kivy.uix.dropdown import DropDown
-from fuzzywuzzy import process
 
 
 class HomePage(Screen):
