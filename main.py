@@ -47,6 +47,9 @@ class MainApp(MDApp):
         self.dic_meses = {1:'janeiro', 2:'fevereiro', 3:'março', 4:'abril', 5:'maio', 6:'junho', 7:'julho', 8:'agosto', 9:'setembro', 10:'outubro', 11:'novembro', 12:'dezembro'}
         env_path = os.path.join(os.path.dirname(__file__), '.env')
         load_dotenv(dotenv_path=env_path)
+        print('token teleg'os.getenv('TOKEN_TELEG'))
+        print('token teleg'os.getenv('URL_PLANILHA'))
+        print('token teleg'os.getenv('COD_PLAN_KEY'))
         return Builder.load_file('main.kv')
 
     def check_internet(self, time=0):
